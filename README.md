@@ -25,6 +25,8 @@ Response:
    }
 ```
 
+![Amazon Go](save-book-info.png)
+
 #### Function get_tickets
 
 ```get_tickets()```
