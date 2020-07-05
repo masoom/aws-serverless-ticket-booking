@@ -9,7 +9,7 @@ Author: Masoom Tulsiani
 
 ## Implementation
 
-![Booking Infrastructure Architecture](Event-ticket.jpg)
+![Booking Infrastructure Architecture](ticket-lambda.jpg)
 
 
 #### Lambda Functions
@@ -56,11 +56,15 @@ Response:
 
 
 Created using API Gateway
+To setup the api gateway, create the api, and then, create a resource (path) /tickets and /booking
 ##### /tickets (GET)
 ##### /booking (POST)
 
+AWS SQS can also be used as pub sub for sending out notifications such as email confirmations for the booking
 
-##### To-DO
 
-###### Messaging 
-######  Loyalty
+
+
+#### To-Do
+Setup an AWS API Gateway with SQS integration, configure SQS's batch size to be consumed by lambdas with provisioned concurrency.
+Send a message to SQS when reserving ticket, and another lambda to process the messages in the queue. This lambda will call the confirm booking or the cancel booking.
