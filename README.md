@@ -1,9 +1,11 @@
 # aws-serverless-ticket-booking
 
 
-![Amazon Go](amazongo.png)
+![Amazon Go](gosmall.png)
 
-Prorotype of a Ticket Booking app for a fictional Event Booking Website Amazon Go
+Prototype of a Ticket Booking app for a fictional Event Booking Website Amazon Go
+
+Author: Masoom Tulsiani
 
 ## Implementation
 
@@ -13,14 +15,20 @@ Prorotype of a Ticket Booking app for a fictional Event Booking Website Amazon G
 Lambda Functions
 
 
+Function book_ticket
 ```book_ticket(user_id, ticket_id, seats)```
 
 
 Response: 
 ```{
-            "body": "{\"Succcess\": true, \"Message\": \"Booking Succcessfull\"}"
-          }
+   "body": "{\"Succcess\": true, \"Message\": \"Booking Succcessfull\"}"
+   }
 ```
+
+Function get_tickets
+
+```get_tickets()```
+
 
 
 DynamoDB Structure
@@ -46,8 +54,8 @@ DynamoDB Structure
 
 
 Created using API Gateway
-/tickets (GET)
-/booking (POST)
+##### /tickets (GET)
+##### /booking (POST)
 
 
 ##### To-DO
