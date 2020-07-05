@@ -12,10 +12,10 @@ Author: Masoom Tulsiani
 ![Booking Infrastructure Architecture](Event-ticket.jpg)
 
 
-Lambda Functions
+#### Lambda Functions
 
 
-Function book_ticket
+#### Function book_ticket
 ```book_ticket(user_id, ticket_id, seats)```
 
 
@@ -25,13 +25,13 @@ Response:
    }
 ```
 
-Function get_tickets
+#### Function get_tickets
 
 ```get_tickets()```
 
 
 
-DynamoDB Structure
+#### DynamoDB Structure
 ###### TICKETS_TABLE
 
 ```dynamodb
