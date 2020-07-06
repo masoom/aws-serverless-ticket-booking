@@ -1,0 +1,42 @@
+.page_title {
+  text-align: center;
+}
+
+.tickets {
+  width: 100%;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+.ticket {
+  border: 1px solid black;
+  margin-bottom: 36px;
+  width: 50%;
+  height: auto;
+}
+
+.ticket_unavailable{
+  border: 1px solid gray;
+  margin-bottom: 36px;
+  width: 50%;
+  height: auto;
+  color: gray;
+}
+
+.ticket_title {
+  font-size: 28px;
+  text-align: left;
+  margin-left: 12px;
+}
+
+.ticket_desc {
+  font-style: italic;
+  text-align: left;
+  margin-left: 18px;
+}
+
+.ticket_button {
+  height: 40px;
+  width: 60px;
+  margin-bottom: 12px;
+}

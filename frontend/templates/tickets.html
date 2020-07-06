@@ -1,0 +1,34 @@
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/tickets.css') }}">
+  </head>
+
+  <header>
+    <h1 class="page_title"> Tickets Plataform - Prototype </h1>
+  </header>
+
+  <main>
+    <body>
+      <center>
+        <div class="tickets">
+          {% for ticket in tickets %}
+          {% if ticket.ticketStatus == "Unavailable" %}
+          <div class="ticket_unavailable">
+            <p class="ticket_title"> {{ ticket.ticketTitle }} </p>
+            <p class="ticket_desc"> {{ ticket.ticketDescription }} </p>
+          </div>
+          {% else %}
+          <div class="ticket">
+            <p class="ticket_title"> {{ ticket.ticketTitle }} </p>
+            <p class="ticket_desc"> {{ ticket.ticketDescription }} </p>
+            <button class="ticket_button" onclick="location.href='/book_ticket?ticket_id={{ ticket.ticketID }}'" type="button"> Get </button>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </center>
+    </body>
+  </main>
+
+</html>

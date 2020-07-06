@@ -110,3 +110,5 @@ ENV/
 
 ## lamdba build
 Pipfile
+
+.xml

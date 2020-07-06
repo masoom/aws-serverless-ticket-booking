@@ -1,0 +1,66 @@
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/book_ticket.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  </head>
+
+  <header>
+    <h1 class="page_title"> Book a ticket </h1>
+  </header>
+
+  <main>
+    <body>
+      <center>
+        <div class="seats">
+          <form action="#" method="post" id="seats">
+            <ul>
+              <fieldset>
+                {% for seat in seats %}
+                <li>
+                  <input type="checkbox" id="Seat{{ seat }}" name="{{ seat }}"/>
+                  <label for="Seat{{ seat }}"> <img src="{{ url_for('static', filename='img/seat.png') }}"/> </label>
+                  <span> {{ seat }} </span>
+                </li>
+                {% endfor %}
+              </fieldset>
+            </ul>
+          </form>
+          <input type="submit" form="seats" value="Submit" />
+        </div>
+      </center>
+    </body>
+  </main>
+</html>
+
+<script language="JavaScript" type="text/javascript">
+$("#seats").submit(function(event){
+  event.preventDefault(); //prevent default action
+  var post_url = $(this).attr("action"); //get form action url
+  var request_method = $(this).attr("method"); //get form GET/POST method
+  var form_data = $(this).serialize(); //Encode form elements for submission
+
+  $.ajax({
+      url : post_url,
+      type: request_method,
+      data : form_data
+  }).done(function(response){
+  Swal.fire({
+    icon: 'success',
+    title: 'Booking Successfull',
+    onClose: () => {
+      window.location.href = '/tickets';
+    }
+  })
+
+  }).fail(function(response) {
+  var json = $.parseJSON(response.responseText);
+  Swal.fire(
+    'Something went wrong',
+    json.Message,
+    'warning'
+  )
+  });
+});
+</script>

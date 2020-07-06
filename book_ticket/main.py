@@ -10,17 +10,17 @@ tickets_table = dynamodb.Table(os.environ.get("TICKETS_TABLE"))
 booked_tickets_table = dynamodb.Table(os.environ.get("BOOKED_TICKETS_TABLE"))
 
 def lambda_handler(event, context):
-    print("Lambda has been called!")
+  print("Lambda has been called!")
 
-    ticket_id = event["ticketID"]
-    seats = event["seatsNumber"]
-    user_id = event["userID"]
+  ticket_id = event["ticketID"]
+  seats = event["seatsNumber"]
+  user_id = event["userID"]
 
-    response = book_ticket(user_id, ticket_id, seats)
+  response = book_ticket(user_id, ticket_id, seats)
 
-    return {
-      'body': json.dumps(response)
-    }
+  return {
+    'body': json.dumps(response)
+  }
 
 def book_ticket(user_id, ticket_id, seats):
   # Try to book ticket
@@ -38,7 +38,7 @@ def book_ticket(user_id, ticket_id, seats):
     except Exception:
       make_seats_avaiable(seats)
   except SeatAlreadyTaken:
-    return {"Succcess": False, "Message": "One of the seats you select has already been taken"}
+    return {"Succcess": False, "Message": "The seat you select has already been taken"}
 
 def is_seat_taken(ticket_id, seats):
   ticket = tickets_table.get_item(
@@ -73,9 +73,20 @@ def make_seats_unavailable(ticket_id, seats):
     },
     UpdateExpression='SET availableSeats = :available_seats',
     ExpressionAttributeValues={
-      ':available_seats': available_seats
+      ':available_seats': available_seats if len(available_seats) > 0 else ["null"]
     }
   )
+
+  if len(available_seats) == 0:
+    tickets_table.update_item(
+      Key={
+        'ticketID': ticket_id
+      },
+      UpdateExpression='SET ticketStatus = :ticket_status',
+      ExpressionAttributeValues={
+        ':ticket_status': "Unavailable"
+      }
+    )
 
 def make_seats_avaiable(ticket_id, seats):
   ticket = tickets_table.get_item(
