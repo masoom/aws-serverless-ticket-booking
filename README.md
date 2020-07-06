@@ -56,6 +56,7 @@ Response:
 
 
 Created using API Gateway
+The functions are invoked from the browser using Amazon API Gateway.
 To setup the api gateway, create the api, and then, create a resource (path) /tickets and /booking
 ##### /tickets (GET)
 ##### /booking (POST)
