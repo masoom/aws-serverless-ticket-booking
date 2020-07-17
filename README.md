@@ -3,7 +3,7 @@
 
 ![Amazon Go](gosmall.png)
 
-Prototype of a Ticket Booking app for a fictional Event Booking Website Amazon Go
+Prototype of a Ticket Booking app for a fictional Event Booking Website 
 
 Author: Masoom Tulsiani
 
